@@ -1,7 +1,7 @@
 package view;
 
-import domain.Menu;
-import domain.Table;
+import domain.menu.Menu;
+import domain.table.Table;
 
 import java.util.List;
 
@@ -35,6 +35,14 @@ public class OutputView {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
+        System.out.println();
+    }
+
+    public static void mainScreenPrint(){
+        System.out.println("## 메인화면");
+        System.out.println("1 - 주문등록");
+        System.out.println("2 - 결제하기");
+        System.out.println("3 - 프로그램 종료");
         System.out.println();
     }
 }

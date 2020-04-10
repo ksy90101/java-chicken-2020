@@ -1,8 +1,10 @@
 package view;
 
 import domain.menu.Menu;
+import domain.state.State;
 import domain.table.Table;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
@@ -38,7 +40,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void mainScreenPrint(){
+    public static void mainScreenPrint() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");

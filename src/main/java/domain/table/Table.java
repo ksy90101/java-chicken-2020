@@ -13,10 +13,13 @@ public class Table {
         this.number = number;
     }
 
-    public void addMenu(Menu menu){
+    public void addMenu(Menu menu) {
         menus.add(menu);
     }
 
+    public List<Menu> getMenus() {
+        return menus;
+    }
 
     @Override
     public String toString() {

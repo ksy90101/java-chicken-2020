@@ -1,7 +1,7 @@
 package view;
 
-import domain.table.Order;
 import domain.menu.Menu;
+import domain.table.Order;
 import domain.table.Table;
 
 import java.util.List;
@@ -10,7 +10,6 @@ public class OutputView {
     private static final String TOP_LINE = "┌ - ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ - ┘";
-    private static final String USE_TABLE_BOTTOM_LINE = "└ \\ ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -48,14 +47,14 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrderMenu(List<Order> orders){
+    public static void printOrderMenu(List<Order> orders) {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
         orders.forEach(System.out::println);
         System.out.println();
     }
 
-    public static void printTotalPayment(long payment){
+    public static void printTotalPayment(long payment) {
         System.out.println("## 최종 결제할 금액");
         System.out.println(payment + "원");
         System.out.println();

@@ -31,7 +31,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputPaymentTable(){
+    public static int inputPaymentTable() {
         System.out.println("## 주문할 테이블을 선택하세요.");
         return scanner.nextInt();
     }

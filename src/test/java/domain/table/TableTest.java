@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 
 class TableTest {
 
-    @DisplayName("테이블의 주문이 있는지 확인하는 테스트")
+    @DisplayName("테이블의 주문이 있는지 확인하는 테스트 - 주문 X")
     @Test
     void ExistOrderTest() {
         Table table = TableRepository.getTable(1);
         Assertions.assertThat(table.isExistOrder()).isFalse();
     }
 
-    @DisplayName("테이블의 주문이 있는지 확인하는 테스트")
+    @DisplayName("테이블의 주문이 있는지 확인하는 테스트 - 주문 O")
     @Test
     void notExistOrderTest() {
         Table table = TableRepository.getTable(1);
@@ -31,7 +31,7 @@ class TableTest {
     @DisplayName("테이블 초기화 작업")
     @AfterEach
     @Test
-    void tearDown(){
+    void tearDown() {
         Table table = TableRepository.getTable(1);
         table.clear();
     }

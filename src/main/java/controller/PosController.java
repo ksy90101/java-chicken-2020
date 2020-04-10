@@ -14,6 +14,7 @@ import view.OutputView;
 import java.util.List;
 
 public class PosController {
+
     public static State start() {
         try {
             OutputView.mainScreenPrint();
@@ -58,5 +59,4 @@ public class PosController {
 
         table.clear();
     }
-
 }

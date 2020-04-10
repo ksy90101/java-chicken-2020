@@ -12,11 +12,11 @@ public class Order {
         this.amount = amount;
     }
 
-    public boolean isChicken(){
+    public boolean isChicken() {
         return menu.getCategory() == Category.CHICKEN;
     }
 
-    public long getTotalPrice(){
+    public long getTotalPrice() {
         return menu.getPrice() * amount;
     }
 

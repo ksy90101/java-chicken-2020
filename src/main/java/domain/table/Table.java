@@ -38,7 +38,7 @@ public class Table {
         orders.clear();
     }
 
-    public boolean isExistOrder(){
+    public boolean isExistOrder() {
         return !orders.isEmpty();
     }
 }

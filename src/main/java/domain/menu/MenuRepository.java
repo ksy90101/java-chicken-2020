@@ -22,7 +22,7 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
-    public static Menu getMenu(int menuNumber){
+    public static Menu getMenu(int menuNumber) {
         return menus().stream()
                 .filter(menu -> menu.getNumber() == menuNumber)
                 .findFirst()

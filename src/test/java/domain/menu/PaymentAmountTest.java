@@ -1,8 +1,8 @@
 package domain.menu;
 
-import domain.table.Order;
 import domain.discount.CardDiscount;
 import domain.discount.CashDiscount;
+import domain.table.Order;
 import domain.table.Table;
 import domain.table.TableRepository;
 import org.junit.jupiter.api.DisplayName;

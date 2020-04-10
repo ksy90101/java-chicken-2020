@@ -9,8 +9,7 @@ class AmountDiscountTest {
 
     @Test
     void calculateDiscount() {
-        AmountDiscount amountDiscount = new AmountDiscount();
-        assertThat(amountDiscount.calculateDiscount(100000, 10)).isEqualTo(90000);
+        assertThat(AmountDiscount.calculateDiscount(100000, 10)).isEqualTo(90000);
     }
 
     @Test

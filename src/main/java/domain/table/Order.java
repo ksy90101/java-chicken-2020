@@ -1,4 +1,4 @@
-package domain;
+package domain.table;
 
 import domain.menu.Category;
 import domain.menu.Menu;
@@ -14,10 +14,6 @@ public class Order {
 
     public boolean isChicken(){
         return menu.getCategory() == Category.CHICKEN;
-    }
-
-    public Menu getMenu() {
-        return menu;
     }
 
     public long getTotalPrice(){

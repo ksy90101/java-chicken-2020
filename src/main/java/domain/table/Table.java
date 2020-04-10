@@ -1,7 +1,5 @@
 package domain.table;
 
-import domain.Order;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +32,13 @@ public class Table {
     @Override
     public String toString() {
         return Integer.toString(number);
+    }
+
+    public void clear() {
+        orders.clear();
+    }
+
+    public boolean isExistOrder(){
+        return !orders.isEmpty();
     }
 }

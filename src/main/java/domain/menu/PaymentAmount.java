@@ -1,6 +1,6 @@
 package domain.menu;
 
-import domain.Order;
+import domain.table.Order;
 import domain.discount.AmountDiscount;
 import domain.discount.Discount;
 

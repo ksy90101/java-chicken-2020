@@ -1,18 +1,16 @@
 package view;
 
-import domain.Order;
+import domain.table.Order;
 import domain.menu.Menu;
-import domain.state.State;
 import domain.table.Table;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
-    private static final String TOP_LINE = "┌ ─ ┐";
+    private static final String TOP_LINE = "┌ - ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE = "└ - ┘";
+    private static final String USE_TABLE_BOTTOM_LINE = "└ \\ ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");

@@ -1,6 +1,6 @@
 package controller;
 
-import domain.Order;
+import domain.table.Order;
 import domain.discount.CardDiscount;
 import domain.discount.CashDiscount;
 import domain.menu.Menu;
@@ -41,7 +41,6 @@ public class PosController {
         int menuNumber = InputView.inputMenuNumber();
         Menu menu = MenuRepository.getMenu(menuNumber);
 
-
         final int amountNumber = InputView.inputAmountNumber();
         table.addOrder(new Order(menu, amountNumber));
     }
@@ -61,6 +60,7 @@ public class PosController {
             PaymentAmount paymentAmount = new PaymentAmount(new CashDiscount());
             OutputView.printTotalPayment(paymentAmount.calculatePaymentAmount(table.getOrders(), table.calculateChickenCount()));
         }
+        table.clear();
     }
 
 }

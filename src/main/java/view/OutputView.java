@@ -52,10 +52,12 @@ public class OutputView {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
         orders.forEach(System.out::println);
+        System.out.println();
     }
 
     public static void printTotalPayment(long payment){
         System.out.println("## 최종 결제할 금액");
         System.out.println(payment + "원");
+        System.out.println();
     }
 }

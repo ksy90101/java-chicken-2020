@@ -1,12 +1,11 @@
 package controller;
 
-import domain.table.Order;
-import domain.discount.CardDiscount;
-import domain.discount.CashDiscount;
+import domain.discount.PaymentWay;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
 import domain.menu.PaymentAmount;
 import domain.state.State;
+import domain.table.Order;
 import domain.table.Table;
 import domain.table.TableRepository;
 import view.InputView;
@@ -52,14 +51,11 @@ public class PosController {
         OutputView.printOrderMenu(table.getOrders());
 
         int paymentWayNumber = InputView.inputPaymentWay(tableNumber);
-        if (paymentWayNumber == 1) {
-            PaymentAmount paymentAmount = new PaymentAmount(new CardDiscount());
-            OutputView.printTotalPayment(paymentAmount.calculatePaymentAmount(table.getOrders(), table.calculateChickenCount()));
-        }
-        if (paymentWayNumber == 2) {
-            PaymentAmount paymentAmount = new PaymentAmount(new CashDiscount());
-            OutputView.printTotalPayment(paymentAmount.calculatePaymentAmount(table.getOrders(), table.calculateChickenCount()));
-        }
+
+        PaymentAmount paymentAmount = PaymentWay.getPaymentAmount(paymentWayNumber);
+        OutputView.printTotalPayment(paymentAmount.calculatePaymentAmount(table.getOrders(),
+                table.calculateChickenCount()));
+
         table.clear();
     }
 

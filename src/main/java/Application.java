@@ -15,6 +15,11 @@ public class Application {
 
         final String featInput = InputView.inputFeatNumber();
         final int featNumber = InputUtil.convertNumber(featInput);
+        String menuInput = InputView.inputMenuNumber();
+        final int menuNumber = InputUtil.convertNumber(menuInput);
+        final String amountInput = InputView.inputAmountNumber();
+        final int amountNumber = InputUtil.convertNumber(amountInput);
+
 
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);

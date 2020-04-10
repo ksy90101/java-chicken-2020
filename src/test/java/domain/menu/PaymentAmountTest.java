@@ -10,11 +10,11 @@ class PaymentAmountTest {
     @Test
     void calculatePaymentAmountTest() {
         Table table = new Table(1);
+        table.addMenu(MenuRepository.menus().get(0));
         table.addMenu(MenuRepository.menus().get(1));
-        table.addMenu(MenuRepository.menus().get(2));
         PaymentAmount paymentAmount = new PaymentAmount();
+        long payment = paymentAmount.calculatePaymentAmount(table.getMenus());
 
-        paymentAmount.calculatePaymentAmount(table.getMenus());
-        assertThat(paymentAmount.getPaymentAmount()).isEqualTo(32000);
+        assertThat(payment).isEqualTo(32000);
     }
 }

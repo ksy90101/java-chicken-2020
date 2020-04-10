@@ -1,5 +1,7 @@
 package domain.menu;
 
+import domain.Order;
+import domain.discount.AmountDiscount;
 import domain.discount.Discount;
 
 import java.util.List;
@@ -12,10 +14,12 @@ public class PaymentAmount {
         this.discount = discount;
     }
 
-    public long calculatePaymentAmount(List<Menu> menus) {
-        paymentAmount = menus.stream()
-                .mapToLong(Menu::getPrice)
+    public long calculatePaymentAmount(List<Order> orders, int chickenMenuCount) {
+        paymentAmount = orders.stream()
+                .mapToLong(Order::getTotalPrice)
                 .sum();
+
+        paymentAmount = AmountDiscount.calculateDiscount(paymentAmount, chickenMenuCount);
         return discount.calculateDiscount(paymentAmount);
     }
 }

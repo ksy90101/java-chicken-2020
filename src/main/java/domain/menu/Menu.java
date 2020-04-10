@@ -17,6 +17,18 @@ public class Menu {
         return price;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

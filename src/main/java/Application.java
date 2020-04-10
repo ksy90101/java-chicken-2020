@@ -4,16 +4,18 @@ import domain.state.State;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+        State state;
+
         do {
-            State state = PosController.start();
+            state = PosController.start();
 
             if (state == State.ORDER) {
                 PosController.enrollOrder();
             }
 
-            if (state == State.EXIT) {
+            if (state == State.PAYMENT) {
                 PosController.Payment();
             }
-        } while (true);
+        } while (state != State.EXIT);
     }
 }

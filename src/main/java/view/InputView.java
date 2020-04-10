@@ -30,4 +30,9 @@ public class InputView {
         System.out.println("## 신용 카드는 1번, 현금은 2번");
         return scanner.nextInt();
     }
+
+    public static int inputPaymentTable(){
+        System.out.println("## 주문할 테이블을 선택하세요.");
+        return scanner.nextInt();
+    }
 }

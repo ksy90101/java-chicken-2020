@@ -1,28 +1,34 @@
 package domain.table;
 
-import domain.menu.Menu;
+import domain.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
     private final int number;
-    private final List<Menu> menus = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
     }
 
-    public void addMenu(Menu menu) {
-        menus.add(menu);
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public int getNumber() {
         return number;
+    }
+
+    public int calculateChickenCount() {
+        return (int) orders.stream()
+                .filter(Order::isChicken)
+                .count();
     }
 
     @Override

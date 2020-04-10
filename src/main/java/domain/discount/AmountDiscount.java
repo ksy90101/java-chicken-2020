@@ -4,12 +4,12 @@ public class AmountDiscount implements Discount {
     private static final int DISCOUNT_AMOUNT = 10;
     private static final int DISCOUNT_MONEY = 10000;
 
-    public long calculateDiscount(long payment, int totalAmount) {
-        return payment - calculateDiscountMoney(totalAmount);
+    public static long calculateDiscount(long payment, long chickenMenuCount) {
+        return payment - calculateDiscountMoney(chickenMenuCount);
     }
 
-    private int calculateDiscountMoney(int totalAmount) {
-        int amount = totalAmount / DISCOUNT_AMOUNT;
+    private static long calculateDiscountMoney(long chickenMenuCount) {
+        long amount = chickenMenuCount / DISCOUNT_AMOUNT;
         return amount * DISCOUNT_MONEY;
     }
 

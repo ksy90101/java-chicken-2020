@@ -1,5 +1,6 @@
 package view;
 
+import domain.Order;
 import domain.menu.Menu;
 import domain.state.State;
 import domain.table.Table;
@@ -49,14 +50,14 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrderMenu(List<Menu> menus){
+    public static void printOrderMenu(List<Order> orders){
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
-        menus.forEach(System.out::println);
+        orders.forEach(System.out::println);
     }
 
-    public static void printTotalPayment(int payment){
+    public static void printTotalPayment(long payment){
         System.out.println("## 최종 결제할 금액");
-        System.out.println(payment);
+        System.out.println(payment + "원");
     }
 }

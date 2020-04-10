@@ -1,32 +1,19 @@
-import Util.InputUtil;
-import domain.menu.Menu;
-import domain.menu.MenuRepository;
-import domain.table.Table;
-import domain.table.TableRepository;
-import view.InputView;
-import view.OutputView;
-
-import java.util.List;
+import controller.PosController;
+import domain.state.State;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        OutputView.mainScreenPrint();
+        do {
+            State state = PosController.start();
 
-        final String featInput = InputView.inputFeatNumber();
-        final int featNumber = InputUtil.convertNumber(featInput);
-        String menuInput = InputView.inputMenuNumber();
-        final int menuNumber = InputUtil.convertNumber(menuInput);
-        final String amountInput = InputView.inputAmountNumber();
-        final int amountNumber = InputUtil.convertNumber(amountInput);
+            if (state == State.ORDER) {
+                PosController.enrollOrder();
+            }
 
-
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+            if (state == State.EXIT) {
+                PosController.Payment();
+            }
+        } while (true);
     }
 }

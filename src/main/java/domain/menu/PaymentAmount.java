@@ -16,6 +16,6 @@ public class PaymentAmount {
         paymentAmount = menus.stream()
                 .mapToLong(Menu::getPrice)
                 .sum();
-        return paymentAmount;
+        return discount.calculateDiscount(paymentAmount);
     }
 }

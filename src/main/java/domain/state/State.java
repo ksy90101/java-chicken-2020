@@ -1,5 +1,7 @@
 package domain.state;
 
+import java.util.Arrays;
+
 public enum State {
     ORDER(1, "주문등록"),
     PAYMENT(2, "결제하기"),
@@ -13,11 +15,14 @@ public enum State {
         this.print = print;
     }
 
-    public int getNumber() {
-        return number;
+    public static boolean isContinue(int featNumber){
+        return featNumber != 3;
     }
 
-    public String getPrint() {
-        return print;
+    public static State isCorrectState(int featNumber){
+        return Arrays.stream(values())
+                .filter(state -> state.number == featNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("찾을수 없는 기능입니다."));
     }
 }

@@ -19,4 +19,11 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Table getTable(int tableNumber) {
+        return tables().stream()
+                .filter(table -> table.getNumber() == tableNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("찾을 수 없는 테이블 입니다."));
+    }
 }

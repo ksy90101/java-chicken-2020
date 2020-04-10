@@ -4,6 +4,7 @@ import domain.menu.Menu;
 import domain.state.State;
 import domain.table.Table;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,5 +47,16 @@ public class OutputView {
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
         System.out.println();
+    }
+
+    public static void printOrderMenu(List<Menu> menus){
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        menus.forEach(System.out::println);
+    }
+
+    public static void printTotalPayment(int payment){
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(payment);
     }
 }

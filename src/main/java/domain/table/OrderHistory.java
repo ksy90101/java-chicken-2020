@@ -16,8 +16,12 @@ public class OrderHistory {
 		return menu.getPrice() * quantity;
 	}
 
-	public boolean isSameCategory(Category category) {
+	public boolean isSameCategory(final Category category) {
 		return menu.getCategory() == category;
+	}
+
+	public boolean isSameMenu(final Menu menu) {
+		return this.menu == menu;
 	}
 
 	@Override

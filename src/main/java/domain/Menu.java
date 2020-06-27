@@ -13,12 +13,12 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isSameNumber(int number) {
+        return this.number == number;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
-    }
-
-    public boolean isSameNumber(int number) {
-        return this.number == number;
     }
 }

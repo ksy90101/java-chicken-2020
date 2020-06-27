@@ -10,7 +10,7 @@ import service.MenuService;
 import service.TableService;
 
 public enum Function {
-	ORDER(1, new OrderController(new MenuService(new MenuRepository()), new TableService(new TableRepository()))),
+	ORDER(1, new OrderController(new MenuService(new MenuRepository()), new TableService(new TableRepository(), new MenuRepository()))),
 	PAYMENT(2, new PaymentController()),
 	EXIT(3, new ExitController());
 

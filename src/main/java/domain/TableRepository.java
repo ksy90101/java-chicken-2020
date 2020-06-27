@@ -16,16 +16,17 @@ public class TableRepository {
 		tables.add(new Table(8, new ArrayList<>()));
 	}
 
-	public static List<Table> tables() {
+	public List<Table> findAll() {
 		return Collections.unmodifiableList(tables);
 	}
 
-	public static void updateOrderHistoryBy(int tableNumber, int menuNumber, int menuQuantity) {
-		Table table = findTable(tableNumber);
+	public void updateOrderHistoryByNumber(final int number, final OrderHistory orderHistory) {
+		Table table = findByNumber(number);
+		table.addOrderHistory(orderHistory);
 	}
 
-	private static Table findTable(int tableNumber) {
-		return tables().stream()
+	public Table findByNumber(int tableNumber) {
+		return findAll().stream()
 			.filter(table -> table.isSameNumber(tableNumber))
 			.findFirst()
 			.orElseThrow(() -> new IllegalArgumentException("해당 테이블을 찾을 수 없습니다."));

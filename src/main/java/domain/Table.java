@@ -11,6 +11,14 @@ public class Table {
 		this.orderHistories = orderHistories;
 	}
 
+	public boolean isSameNumber(final int tableNumber) {
+		return this.number == tableNumber;
+	}
+
+	public void addOrderHistory(OrderHistory orderHistory) {
+		orderHistories.add(orderHistory);
+	}
+
 	@Override
 	public String toString() {
 		return Integer.toString(number);
@@ -20,10 +28,7 @@ public class Table {
 		return number;
 	}
 
-	public boolean isSameNumber(final int tableNumber) {
-		return this.number == tableNumber;
-	}
-
-	public void saveMenu(Menu menu) {
+	public List<OrderHistory> getOrderHistories() {
+		return orderHistories;
 	}
 }

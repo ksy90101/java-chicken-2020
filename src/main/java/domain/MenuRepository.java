@@ -18,11 +18,11 @@ public class MenuRepository {
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
     }
 
-    public static List<Menu> findAll() {
+    public List<Menu> findAll() {
         return Collections.unmodifiableList(menus);
     }
 
-    public static Menu findById(int number) {
+    public Menu findById(int number) {
         return menus.stream()
             .filter(menu -> menu.isSameNumber(number))
             .findFirst()

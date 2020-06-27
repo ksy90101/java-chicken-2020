@@ -11,7 +11,8 @@ public class OrderHistoryTest {
 	@DisplayName("주문내역이 잘 생성되는지 확인하는 테스트")
 	@Test
 	void createOrderHistory(){
-		Menu menu = MenuRepository.findById(1);
+		MenuRepository menuRepository = new MenuRepository();
+		Menu menu = menuRepository.findById(1);
 		OrderHistory orderHistory = new OrderHistory(menu, 1);
 		assertAll(
 			() -> assertThat(orderHistory.getMenu()).isEqualTo(menu),

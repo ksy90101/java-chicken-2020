@@ -13,6 +13,6 @@ public class MenuService {
 	}
 
 	public List<Menu> findMenus() {
-		return MenuRepository.findAll();
+		return menuRepository.findAll();
 	}
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import domain.OrderHistory;
 import service.MenuService;
 import service.TableService;
 import view.InputView;
@@ -16,13 +17,18 @@ public class OrderController implements RunController{
 
 	@Override
 	public void run() {
+		addOrderHistory();
+	}
+
+	private void addOrderHistory(){
 		final int tableNumber = getTableNumber();
 		int menuNumber = getMenuNumber();
 		int menuQuantity = getMenuQuantity();
+		tableService.updateOrderHistoryByNumber(tableNumber, menuNumber, menuQuantity);
 	}
 
 	private int getTableNumber() {
-		OutputView.printTables(tableService.findTable());
+		OutputView.printTables(tableService.findTables());
 		return InputView.inputTableNumber();
 	}
 

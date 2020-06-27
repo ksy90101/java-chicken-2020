@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Table {
@@ -19,16 +20,12 @@ public class Table {
 		orderHistories.add(orderHistory);
 	}
 
+	public List<OrderHistory> getOrderHistories() {
+		return Collections.unmodifiableList(orderHistories);
+	}
+
 	@Override
 	public String toString() {
 		return Integer.toString(number);
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public List<OrderHistory> getOrderHistories() {
-		return orderHistories;
 	}
 }

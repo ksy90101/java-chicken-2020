@@ -11,7 +11,7 @@ import service.TableService;
 
 public enum Function {
 	ORDER(1, new OrderController(new MenuService(new MenuRepository()), new TableService(new TableRepository(), new MenuRepository()))),
-	PAYMENT(2, new PaymentController()),
+	PAYMENT(2, new PaymentController(new TableService(new TableRepository(), new MenuRepository()))),
 	EXIT(3, new ExitController());
 
 	private final int number;

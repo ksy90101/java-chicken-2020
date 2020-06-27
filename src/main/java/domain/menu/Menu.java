@@ -1,4 +1,4 @@
-package domain;
+package domain.menu;
 
 public class Menu {
     private final int number;
@@ -28,5 +28,9 @@ public class Menu {
 
     public int getPrice() {
         return price;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

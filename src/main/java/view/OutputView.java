@@ -1,6 +1,6 @@
 package view;
 
-import domain.Menu;
+import domain.menu.Menu;
 import domain.OrderHistory;
 import domain.Table;
 

@@ -6,6 +6,7 @@ import controller.ExitController;
 import controller.OrderController;
 import controller.PaymentController;
 import controller.RunController;
+import domain.menu.MenuRepository;
 import service.MenuService;
 import service.TableService;
 

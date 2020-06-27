@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+
 class TableTest {
 
 	@DisplayName("해당 테이블 번호가 같은지 확인하는 테스트")

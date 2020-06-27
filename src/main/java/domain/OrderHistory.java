@@ -1,5 +1,8 @@
 package domain;
 
+import domain.menu.Category;
+import domain.menu.Menu;
+
 public class OrderHistory {
 	private final Menu menu;
 	private final int quantity;
@@ -7,6 +10,14 @@ public class OrderHistory {
 	public OrderHistory(final Menu menu, final int quantity) {
 		this.menu = menu;
 		this.quantity = quantity;
+	}
+
+	public long calculatePaymentAmount() {
+		return menu.getPrice() * quantity;
+	}
+
+	public boolean isSameCategory(Category category) {
+		return menu.getCategory() == category;
 	}
 
 	@Override

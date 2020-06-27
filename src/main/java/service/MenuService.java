@@ -2,8 +2,8 @@ package service;
 
 import java.util.List;
 
-import domain.Menu;
-import domain.MenuRepository;
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
 
 public class MenuService {
 	private final MenuRepository menuRepository;

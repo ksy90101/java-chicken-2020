@@ -2,12 +2,16 @@ package domain.payment;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 
+import domain.payment.discount.CashDisCount;
+import domain.payment.discount.ChickenSizeDisCount;
 import domain.table.OrderHistories;
 
 public enum Payment {
-	CARD(1, new CardPayment()),
-	CASH(2, new CardPayment());
+
+	CARD(1, new CardPayment(Collections.singletonList(new ChickenSizeDisCount()))),
+	CASH(2, new CardPayment(Arrays.asList(new ChickenSizeDisCount(), new CashDisCount())));
 
 	private final int number;
 	private final PaymentStrategy paymentStrategy;

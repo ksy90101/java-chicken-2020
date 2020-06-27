@@ -1,36 +1,48 @@
 package domain.payment;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.List;
+import java.util.Optional;
 
 import domain.menu.Category;
+import domain.payment.discount.CashDisCount;
+import domain.payment.discount.ChickenSizeDisCount;
+import domain.payment.discount.DisCountStrategy;
 import domain.table.OrderHistories;
 import domain.table.OrderHistory;
 
 public class CashPayment implements PaymentStrategy {
+	private final List<DisCountStrategy> disCountStrategies;
 
-	private static final String CASH_DISCOUNT_PERCENT = "0.95";
-	private static final int CHICKEN_SIZE_DISCOUNT_MONEY = 10000;
-	private static final int CHICKEN_SIZE_DISCOUNT_AMOUNT = 10;
+	public CashPayment(final List<DisCountStrategy> disCountStrategies) {
+		this.disCountStrategies = disCountStrategies;
+	}
 
 	@Override
 	public BigDecimal pay(final OrderHistories orderHistories) {
 		BigDecimal paymentAmountOfChicken = calculatePaymentAmountOfChicken(orderHistories);
+		BigDecimal paymentAmountOfTotal = paymentAmountOfChicken.add(calculatePaymentAmountOfBeverage(orderHistories));
 
-		return paymentAmountOfChicken.add(calculatePaymentAmountOfBeverage(orderHistories))
-			.multiply(new BigDecimal(CASH_DISCOUNT_PERCENT))
-			.setScale(0, RoundingMode.CEILING);
+		Optional<DisCountStrategy> disCount = findDisCountStrategy(CashDisCount.class);
+		if (disCount.isPresent()) {
+			return disCount.get().calculateDiscount(paymentAmountOfTotal, orderHistories);
+		}
+		return paymentAmountOfTotal;
 	}
 
 	private BigDecimal calculatePaymentAmountOfChicken(final OrderHistories orderHistories) {
 		long chickenPaymentAmount = orderHistories.getOrderHistories()
 			.stream()
 			.filter(orderHistory -> orderHistory.isSameCategory(Category.CHICKEN))
-			.map(OrderHistory::calculatePaymentAmount)
-			.mapToLong(n -> n)
+			.mapToLong(OrderHistory::calculatePaymentAmount)
 			.sum();
 
-		return new BigDecimal(chickenPaymentAmount).subtract(disCountByChickenSize(orderHistories));
+		Optional<DisCountStrategy> disCount = findDisCountStrategy(ChickenSizeDisCount.class);
+		if (disCount.isPresent()) {
+			return disCount.get().calculateDiscount(new BigDecimal(chickenPaymentAmount), orderHistories);
+		}
+
+		return new BigDecimal(chickenPaymentAmount);
 	}
 
 	private BigDecimal calculatePaymentAmountOfBeverage(final OrderHistories orderHistories) {
@@ -44,8 +56,9 @@ public class CashPayment implements PaymentStrategy {
 		return new BigDecimal(beveragePaymentAmount);
 	}
 
-	private BigDecimal disCountByChickenSize(OrderHistories orderHistories) {
-		return new BigDecimal(
-			CHICKEN_SIZE_DISCOUNT_MONEY * (orderHistories.getChickenCount() / CHICKEN_SIZE_DISCOUNT_AMOUNT));
+	private Optional<DisCountStrategy> findDisCountStrategy(Class<? extends DisCountStrategy> disCountStrategy) {
+		return disCountStrategies.stream()
+			.filter(disCountStrategyValue -> disCountStrategyValue.getClass() == disCountStrategy)
+			.findFirst();
 	}
 }

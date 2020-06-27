@@ -1,12 +1,22 @@
 package domain.payment;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 
 import domain.menu.Category;
+import domain.payment.discount.ChickenSizeDisCount;
+import domain.payment.discount.DisCountStrategy;
 import domain.table.OrderHistories;
 import domain.table.OrderHistory;
 
 public class CardPayment implements PaymentStrategy {
+
+	private final List<DisCountStrategy> disCountStrategies;
+
+	public CardPayment(final List<DisCountStrategy> disCountStrategies) {
+		this.disCountStrategies = disCountStrategies;
+	}
 
 	@Override
 	public BigDecimal pay(final OrderHistories orderHistories) {
@@ -21,12 +31,23 @@ public class CardPayment implements PaymentStrategy {
 		long chickenPaymentAmount = orderHistories.getOrderHistories()
 			.stream()
 			.filter(orderHistory -> orderHistory.isSameCategory(Category.CHICKEN))
-			.map(OrderHistory::calculatePaymentAmount)
-			.mapToLong(n -> n)
+			.mapToLong(OrderHistory::calculatePaymentAmount)
 			.sum();
 
-		return new BigDecimal(String.valueOf(chickenPaymentAmount))
-			.subtract(disCountByChickenSize(orderHistories));
+		Optional<DisCountStrategy> disCount = findDisCountStrategy(ChickenSizeDisCount.class);
+
+		if (disCount.isPresent()) {
+			return disCount.get()
+				.calculateDiscount(new BigDecimal(String.valueOf(chickenPaymentAmount)), orderHistories);
+		}
+
+		return new BigDecimal(String.valueOf(chickenPaymentAmount));
+	}
+
+	private Optional<DisCountStrategy> findDisCountStrategy(Class<? extends DisCountStrategy> disCountStrategy) {
+		return disCountStrategies.stream()
+			.filter(disCountStrategyValue -> disCountStrategyValue.getClass() == disCountStrategy)
+			.findFirst();
 	}
 
 	private BigDecimal calculatePaymentAmountOfBeverage(final OrderHistories orderHistories) {
@@ -38,9 +59,5 @@ public class CardPayment implements PaymentStrategy {
 			.sum();
 
 		return new BigDecimal(String.valueOf(beveragePaymentAmount));
-	}
-
-	private BigDecimal disCountByChickenSize(final OrderHistories orderHistories) {
-		return new BigDecimal(10000 * (orderHistories.getChickenCount() / 10));
 	}
 }

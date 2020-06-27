@@ -6,9 +6,11 @@ import controller.ExitController;
 import controller.OrderController;
 import controller.PaymentController;
 import controller.RunController;
+import service.MenuService;
+import service.TableService;
 
 public enum Function {
-	ORDER(1, new OrderController()),
+	ORDER(1, new OrderController(new MenuService(new MenuRepository()), new TableService(new TableRepository()))),
 	PAYMENT(2, new PaymentController()),
 	EXIT(3, new ExitController());
 

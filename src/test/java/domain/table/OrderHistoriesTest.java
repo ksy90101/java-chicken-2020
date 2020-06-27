@@ -1,7 +1,6 @@
 package domain.table;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
@@ -12,15 +11,29 @@ import domain.menu.Menu;
 import domain.menu.MenuRepository;
 
 class OrderHistoriesTest {
+
 	@DisplayName("주문내역에 치킨이 몇개 있는지 확인하는 테스트")
 	@Test
-	void getChickenCountTest(){
+	void getChickenCountTest() {
 		MenuRepository menuRepository = new MenuRepository();
-		Table table = new Table(1, new ArrayList<>());
 		Menu chicken = menuRepository.findById(1);
 		Menu beverage = menuRepository.findById(21);
-		table.addOrderHistory(new OrderHistory(chicken, 11));
-		table.addOrderHistory(new OrderHistory(beverage, 10));
-		assertThat(table.getOrderHistories().getChickenCount()).isEqualTo(11);
+		OrderHistories orderHistories = new OrderHistories(new ArrayList<>());
+		orderHistories.add(new OrderHistory(chicken, 11));
+		orderHistories.add(new OrderHistory(beverage, 10));
+		assertThat(orderHistories.getChickenCount()).isEqualTo(11);
+	}
+
+	@DisplayName("주문내역이 삭제되는지 확인하는 테스트")
+	@Test
+	void clearOrderHistoriesTest() {
+		MenuRepository menuRepository = new MenuRepository();
+		Menu chicken = menuRepository.findById(1);
+		Menu beverage = menuRepository.findById(21);
+		OrderHistories orderHistories = new OrderHistories(new ArrayList<>());
+		orderHistories.add(new OrderHistory(chicken, 11));
+		orderHistories.add(new OrderHistory(beverage, 10));
+		orderHistories.clear();
+		assertThat(orderHistories.size()).isEqualTo(0);
 	}
 }

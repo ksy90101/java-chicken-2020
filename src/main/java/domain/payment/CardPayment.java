@@ -1,13 +1,13 @@
 package domain.payment;
 
 import java.math.BigDecimal;
-import java.util.List;
 
+import domain.menu.Category;
 import domain.table.OrderHistories;
 import domain.table.OrderHistory;
-import domain.menu.Category;
 
-public class CardPayment implements PaymentStrategy{
+public class CardPayment implements PaymentStrategy {
+
 	@Override
 	public BigDecimal pay(final OrderHistories orderHistories) {
 		BigDecimal paymentAmountOfChicken = calculatePaymentAmountOfChicken(orderHistories);
@@ -40,7 +40,7 @@ public class CardPayment implements PaymentStrategy{
 		return new BigDecimal(String.valueOf(beveragePaymentAmount));
 	}
 
-	private BigDecimal disCountByChickenSize(OrderHistories orderHistories) {
+	private BigDecimal disCountByChickenSize(final OrderHistories orderHistories) {
 		return new BigDecimal(10000 * (orderHistories.getChickenCount() / 10));
 	}
 }

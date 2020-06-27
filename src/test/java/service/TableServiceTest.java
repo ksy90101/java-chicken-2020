@@ -19,7 +19,7 @@ class TableServiceTest {
 
 	@DisplayName("단일 테이블 조회")
 	@Test
-	void findByNumber(){
+	void findByNumber() {
 		TableService tableService = new TableService(new TableRepository(), new MenuRepository());
 		assertThat(tableService.findByNumber(1)).isNotNull();
 	}

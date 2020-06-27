@@ -6,6 +6,7 @@ import domain.menu.Menu;
 import domain.menu.MenuRepository;
 
 public class MenuService {
+
 	private final MenuRepository menuRepository;
 
 	public MenuService(final MenuRepository menuRepository) {

@@ -11,8 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
-import domain.table.OrderHistory;
-import domain.table.Table;
 
 class TableTest {
 
@@ -26,7 +24,7 @@ class TableTest {
 
 	@DisplayName("테이블에 주문내역이 제대로 들어가는지 확인하는 테스트")
 	@Test
-	void addOrderHistoryTest(){
+	void addOrderHistoryTest() {
 		MenuRepository menuRepository = new MenuRepository();
 		Table table = new Table(1, new ArrayList<>());
 		Menu menu = menuRepository.findById(1);

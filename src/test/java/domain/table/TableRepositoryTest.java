@@ -1,19 +1,18 @@
 package domain.table;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class TableRepositoryTest {
+
 	private final TableRepository tableRepository = new TableRepository();
 
 	@DisplayName("해당 테이블을 찾아오는지 확인하는 테스트")
 	@ParameterizedTest
-	@ValueSource(ints = {1,2,3,5,6,8})
+	@ValueSource(ints = {1, 2, 3, 5, 6, 8})
 	void findByNumberTest(int number) {
 		assertThat(tableRepository.findByNumber(number).getNumber())
 			.isEqualTo(number);

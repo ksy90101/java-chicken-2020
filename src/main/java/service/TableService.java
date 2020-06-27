@@ -26,13 +26,13 @@ public class TableService {
 		return tableRepository.findAll();
 	}
 
-	public void updateOrderHistoryByNumber(final int tableNumber, final int menuNumber, final int menuQuantity){
-		Menu menu =menuRepository .findById(menuNumber);
+	public void updateOrderHistoryByNumber(final int tableNumber, final int menuNumber, final int menuQuantity) {
+		Menu menu = menuRepository.findById(menuNumber);
 		OrderHistory orderHistory = new OrderHistory(menu, menuQuantity);
 		tableRepository.updateOrderHistoryByNumber(tableNumber, orderHistory);
 	}
 
-	public void deleteOrderHistoriesByNumber(final int number){
+	public void deleteOrderHistoriesByNumber(final int number) {
 		Table table = tableRepository.findByNumber(number);
 		table.clearOrderHistories();
 	}

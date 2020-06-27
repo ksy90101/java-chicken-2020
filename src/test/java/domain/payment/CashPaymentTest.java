@@ -2,18 +2,18 @@ package domain.payment;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.table.OrderHistories;
-import domain.table.OrderHistory;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
+import domain.table.OrderHistories;
+import domain.table.OrderHistory;
 
 class CashPaymentTest {
+
 	MenuRepository menuRepository = new MenuRepository();
 
 	@DisplayName("치킨이 9마리 이하일때 할인 없이 금액이 나오는지 확인하는 테스트")

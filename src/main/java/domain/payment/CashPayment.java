@@ -2,20 +2,23 @@ package domain.payment;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 
+import domain.menu.Category;
 import domain.table.OrderHistories;
 import domain.table.OrderHistory;
-import domain.menu.Category;
 
 public class CashPayment implements PaymentStrategy {
+
+	private static final String CASH_DISCOUNT_PERCENT = "0.95";
+	private static final int CHICKEN_SIZE_DISCOUNT_MONEY = 10000;
+	private static final int CHICKEN_SIZE_DISCOUNT_AMOUNT = 10;
 
 	@Override
 	public BigDecimal pay(final OrderHistories orderHistories) {
 		BigDecimal paymentAmountOfChicken = calculatePaymentAmountOfChicken(orderHistories);
 
 		return paymentAmountOfChicken.add(calculatePaymentAmountOfBeverage(orderHistories))
-			.multiply(new BigDecimal("0.95"))
+			.multiply(new BigDecimal(CASH_DISCOUNT_PERCENT))
 			.setScale(0, RoundingMode.CEILING);
 	}
 
@@ -42,6 +45,7 @@ public class CashPayment implements PaymentStrategy {
 	}
 
 	private BigDecimal disCountByChickenSize(OrderHistories orderHistories) {
-		return new BigDecimal(10000 * (orderHistories.getChickenCount() / 10));
+		return new BigDecimal(
+			CHICKEN_SIZE_DISCOUNT_MONEY * (orderHistories.getChickenCount() / CHICKEN_SIZE_DISCOUNT_AMOUNT));
 	}
 }

@@ -8,7 +8,7 @@ import service.TableService;
 import view.InputView;
 import view.OutputView;
 
-public class PaymentController implements RunController{
+public class PaymentController implements RunController {
 	private final TableService tableService;
 
 	public PaymentController(final TableService tableService) {
@@ -17,7 +17,7 @@ public class PaymentController implements RunController{
 
 	@Override
 	public void run() {
-		try{
+		try {
 			int tableNumber = getTableNumber();
 			Table table = tableService.findByNumber(tableNumber);
 			int paymentNumber = getPaymentNumber(table);
@@ -25,7 +25,7 @@ public class PaymentController implements RunController{
 			BigDecimal account = payment.pay(table.getOrderHistories());
 			OutputView.printResultAccount(account);
 			tableService.deleteOrderHistoriesByNumber(tableNumber);
-		}catch (IllegalArgumentException e){
+		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 	}

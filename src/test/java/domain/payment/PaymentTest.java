@@ -8,10 +8,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class PaymentTest {
+
 	@DisplayName("존재하는 결제 방식을 가져오는지 확인하는 테스트")
 	@ParameterizedTest
 	@CsvSource(value = {"1:CARD", "2:CASH"}, delimiter = ':')
-	void ofTest(int number, Payment payment){
+	void ofTest(int number, Payment payment) {
 		assertThat(Payment.of(number)).isEqualTo(payment);
 	}
 

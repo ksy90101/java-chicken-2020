@@ -53,5 +53,10 @@ public class OutputView {
         for (final OrderHistory orderHistory : orderHistories){
             System.out.println(orderHistory);
         }
+        System.out.println();
+    }
+
+    public static void printTablePaymentGuide(final int number) {
+        System.out.printf("## %d번 테이블의 결제를 진행합니다.", number);
     }
 }

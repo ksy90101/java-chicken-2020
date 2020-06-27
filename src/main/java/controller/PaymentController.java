@@ -16,6 +16,8 @@ public class PaymentController implements RunController{
 	public void run() {
 		Table table = tableService.findByNumber(getTableNumber());
 		OutputView.printOrderHistories(table.getOrderHistories());
+		OutputView.printTablePaymentGuide(table.getNumber());
+		int paymentNumber = InputView.inputPaymentNumber();
 	}
 
 	private int getTableNumber() {

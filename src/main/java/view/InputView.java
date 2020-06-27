@@ -26,4 +26,9 @@ public class InputView {
         System.out.println("## 메뉴의 수량을 입력하세요.");
         return Converter.NumberConverterBy(scanner.nextLine());
     }
+
+	public static int inputPaymentNumber() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        return Converter.NumberConverterBy(scanner.nextLine());
+    }
 }

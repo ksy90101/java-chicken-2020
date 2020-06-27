@@ -1,4 +1,4 @@
-package domain;
+package domain.table;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
-import domain.table.OrderHistory;
 
 public class OrderHistoryTest {
 

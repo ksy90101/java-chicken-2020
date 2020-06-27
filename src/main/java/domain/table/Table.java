@@ -1,6 +1,5 @@
 package domain.table;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Table {
@@ -20,6 +19,14 @@ public class Table {
 		orderHistories.add(orderHistory);
 	}
 
+	public boolean isUsingTable() {
+		return orderHistories.size() != 0;
+	}
+
+	public void clearOrderHistories(){
+		orderHistories.clear();
+	}
+
 	@Override
 	public String toString() {
 		return Integer.toString(number);
@@ -31,9 +38,5 @@ public class Table {
 
 	public OrderHistories getOrderHistories() {
 		return orderHistories;
-	}
-
-	public boolean isUsingTable() {
-		return orderHistories.size() != 0;
 	}
 }

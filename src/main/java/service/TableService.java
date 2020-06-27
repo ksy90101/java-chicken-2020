@@ -31,4 +31,9 @@ public class TableService {
 		OrderHistory orderHistory = new OrderHistory(menu, menuQuantity);
 		tableRepository.updateOrderHistoryByNumber(tableNumber, orderHistory);
 	}
+
+	public void deleteOrderHistoriesByNumber(final int number){
+		Table table = tableRepository.findByNumber(number);
+		table.clearOrderHistories();
+	}
 }

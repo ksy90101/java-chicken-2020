@@ -18,11 +18,13 @@ public class PaymentController implements RunController{
 	@Override
 	public void run() {
 		try{
-			Table table = tableService.findByNumber(getTableNumber());
+			int tableNumber = getTableNumber();
+			Table table = tableService.findByNumber(tableNumber);
 			int paymentNumber = getPaymentNumber(table);
 			Payment payment = Payment.of(paymentNumber);
 			BigDecimal account = payment.pay(table.getOrderHistories());
 			OutputView.printResultAccount(account);
+			tableService.deleteOrderHistoriesByNumber(tableNumber);
 		}catch (IllegalArgumentException e){
 			System.out.println(e.getMessage());
 		}

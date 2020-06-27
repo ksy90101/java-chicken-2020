@@ -69,7 +69,7 @@ public class OutputView {
 
     public static void printOrderHistories(final OrderHistories orderHistories) {
         System.out.println("## 주문 내역");
-        System.out.println("## 메뉴 수량 금액");
+        System.out.println("메뉴 수량 금액");
         for (final OrderHistory orderHistory : orderHistories.getOrderHistories()){
             System.out.println(orderHistory);
         }

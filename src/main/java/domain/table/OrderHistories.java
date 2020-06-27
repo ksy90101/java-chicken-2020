@@ -25,11 +25,15 @@ public class OrderHistories {
 			.sum();
 	}
 
-	public List<OrderHistory> getOrderHistories() {
-		return Collections.unmodifiableList(orderHistories);
-	}
-
 	public int size() {
 		return orderHistories.size();
+	}
+
+	public void clear() {
+		orderHistories.clear();
+	}
+
+	public List<OrderHistory> getOrderHistories() {
+		return Collections.unmodifiableList(orderHistories);
 	}
 }

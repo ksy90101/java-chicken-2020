@@ -32,4 +32,8 @@ public class Table {
 	public OrderHistories getOrderHistories() {
 		return orderHistories;
 	}
+
+	public boolean isUsingTable() {
+		return orderHistories.size() != 0;
+	}
 }

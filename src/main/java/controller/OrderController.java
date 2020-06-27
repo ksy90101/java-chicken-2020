@@ -5,7 +5,8 @@ import service.TableService;
 import view.InputView;
 import view.OutputView;
 
-public class OrderController implements RunController{
+public class OrderController implements RunController {
+
 	private final MenuService menuService;
 	private final TableService tableService;
 
@@ -16,10 +17,14 @@ public class OrderController implements RunController{
 
 	@Override
 	public void run() {
-		addOrderHistory();
+		try {
+			addOrderHistory();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
-	private void addOrderHistory(){
+	private void addOrderHistory() {
 		final int tableNumber = getTableNumber();
 		int menuNumber = getMenuNumber();
 		int menuQuantity = getMenuQuantity();

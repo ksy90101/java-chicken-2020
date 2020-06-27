@@ -17,17 +17,25 @@ public class PaymentController implements RunController{
 
 	@Override
 	public void run() {
-		Table table = tableService.findByNumber(getTableNumber());
-		OutputView.printOrderHistories(table.getOrderHistories());
-		OutputView.printTablePaymentGuide(table.getNumber());
-		int paymentNumber = InputView.inputPaymentNumber();
-		Payment payment = Payment.of(paymentNumber);
-		BigDecimal account = payment.pay(table.getOrderHistories());
-		OutputView.printResultAccount(account);
+		try{
+			Table table = tableService.findByNumber(getTableNumber());
+			int paymentNumber = getPaymentNumber(table);
+			Payment payment = Payment.of(paymentNumber);
+			BigDecimal account = payment.pay(table.getOrderHistories());
+			OutputView.printResultAccount(account);
+		}catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private int getTableNumber() {
 		OutputView.printTables(tableService.findTables());
 		return InputView.inputTableNumber();
+	}
+
+	private int getPaymentNumber(Table table) {
+		OutputView.printOrderHistories(table.getOrderHistories());
+		OutputView.printTablePaymentGuide(table.getNumber());
+		return InputView.inputPaymentNumber();
 	}
 }

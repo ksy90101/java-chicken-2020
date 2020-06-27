@@ -28,4 +28,8 @@ public class OrderHistories {
 	public List<OrderHistory> getOrderHistories() {
 		return Collections.unmodifiableList(orderHistories);
 	}
+
+	public int size() {
+		return orderHistories.size();
+	}
 }

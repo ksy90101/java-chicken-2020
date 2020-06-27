@@ -9,15 +9,16 @@ import domain.table.Table;
 import domain.table.TableRepository;
 
 public class TableService {
-	private TableRepository tableRepository;
-	private MenuRepository menuRepository;
+
+	private final TableRepository tableRepository;
+	private final MenuRepository menuRepository;
 
 	public TableService(final TableRepository tableRepository, final MenuRepository menuRepository) {
 		this.tableRepository = tableRepository;
 		this.menuRepository = menuRepository;
 	}
 
-	public Table findByNumber(int number) {
+	public Table findByNumber(final int number) {
 		return tableRepository.findByNumber(number);
 	}
 

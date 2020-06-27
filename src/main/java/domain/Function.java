@@ -12,6 +12,7 @@ import service.MenuService;
 import service.TableService;
 
 public enum Function {
+
 	ORDER(1, new OrderController(new MenuService(new MenuRepository()), new TableService(new TableRepository(), new MenuRepository()))),
 	PAYMENT(2, new PaymentController(new TableService(new TableRepository(), new MenuRepository()))),
 	EXIT(3, new ExitController());
@@ -24,14 +25,14 @@ public enum Function {
 		this.runController = runController;
 	}
 
-	public static Function of(int number) {
+	public static Function of(final int number) {
 		return Arrays.stream(Function.values())
 			.filter(function -> function.isSameNumber(number)).
 				findFirst()
 			.orElseThrow(() -> new IllegalArgumentException("해당 기능을 찾을 수 없습니다. number = " + number));
 	}
 
-	private boolean isSameNumber(int number) {
+	private boolean isSameNumber(final int number) {
 		return this.number == number;
 	}
 

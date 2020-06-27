@@ -25,10 +25,9 @@ public class OutputView {
     public static void printTables(final List<Table> tables) {
         System.out.println();
         System.out.println("## 테이블 목록");
-        final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLines(tables.size());
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLines(tables);
         System.out.println();
     }
 
@@ -39,11 +38,26 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printLine(final String line, final int count) {
-        for (int index = 0; index < count; index++) {
-            System.out.print(line);
+    private static void printTopLines(final int size){
+        for (int i = 0; i < size; i++){
+            System.out.print(TOP_LINE);
         }
         System.out.println();
+    }
+
+    private static void printBottomLines(final List<Table> tables) {
+        for (Table table : tables) {
+            printBottomLine(table);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final Table table){
+        if(table.isUsingTable()){
+            System.out.print(BOTTOM_LINE_USING);
+            return;
+        }
+        System.out.print(BOTTOM_LINE);
     }
 
     private static void printTableNumbers(final List<Table> tables) {

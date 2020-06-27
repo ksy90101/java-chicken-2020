@@ -17,7 +17,7 @@ class CardPaymentTest {
 
 	@DisplayName("치킨이 9마리 이하일때 할인 없이 금액이 나오는지 확인하는 테스트")
 	@Test
-	void payTest() {
+	void payByNineLessChickenAmountTest() {
 		Menu chicken1 = menuRepository.findById(1);
 		Menu chicken2 = menuRepository.findById(2);
 		Menu beverage = menuRepository.findById(21);
@@ -27,7 +27,23 @@ class CardPaymentTest {
 			new OrderHistory(chicken2, 2),
 			new OrderHistory(beverage, 2));
 
-		Assertions.assertThat(cardPayment.pay(orderHistories))
-			.isEqualTo(BigInteger.valueOf(66000));
+		Assertions.assertThat(cardPayment.pay(orderHistories).toString())
+			.isEqualTo(BigInteger.valueOf(66000).toString());
 	}
+
+	// @DisplayName("치킨이 10마리 이상일때 할인 구현 금액이 나오는지 확인하는 테스트")
+	// @Test
+	// void payByTenGreaterChickenAmountTest() {
+	// 	Menu chicken1 = menuRepository.findById(1);
+	// 	Menu chicken2 = menuRepository.findById(2);
+	// 	Menu beverage = menuRepository.findById(21);
+	// 	CardPayment cardPayment = new CardPayment();
+	// 	List<OrderHistory> orderHistories = Arrays.asList(
+	// 		new OrderHistory(chicken1, 5),
+	// 		new OrderHistory(chicken2, 7),
+	// 		new OrderHistory(beverage, 2));
+	//
+	// 	Assertions.assertThat(cardPayment.pay(orderHistories).toString())
+	// 		.isEqualTo(BigInteger.valueOf(66000)).toString();
+	// }
 }

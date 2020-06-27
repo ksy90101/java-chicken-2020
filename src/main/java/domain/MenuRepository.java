@@ -18,7 +18,14 @@ public class MenuRepository {
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
     }
 
-    public static List<Menu> menus() {
+    public static List<Menu> findAll() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static Menu findById(int number) {
+        return menus.stream()
+            .filter(menu -> menu.isSameNumber(number))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("해당 메뉴가 존재하지 않습니다. number = " + number));
     }
 }

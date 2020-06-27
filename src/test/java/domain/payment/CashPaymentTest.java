@@ -2,7 +2,6 @@ package domain.payment;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

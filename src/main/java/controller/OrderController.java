@@ -1,7 +1,5 @@
 package controller;
 
-import domain.MenuRepository;
-import domain.TableRepository;
 import service.MenuService;
 import service.TableService;
 import view.InputView;
@@ -18,8 +16,22 @@ public class OrderController implements RunController{
 
 	@Override
 	public void run() {
+		final int tableNumber = getTableNumber();
+		int menuNumber = getMenuNumber();
+		int menuQuantity = getMenuQuantity();
+	}
+
+	private int getTableNumber() {
 		OutputView.printTables(tableService.findTable());
-		final int tableNumber = InputView.inputTableNumber();
+		return InputView.inputTableNumber();
+	}
+
+	private int getMenuNumber() {
 		OutputView.printMenus(menuService.findMenus());
+		return InputView.inputMenuNumber();
+	}
+
+	private int getMenuQuantity() {
+		return InputView.inputMenuQuantity();
 	}
 }

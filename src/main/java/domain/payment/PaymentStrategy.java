@@ -1,11 +1,9 @@
 package domain.payment;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.List;
 
-import domain.OrderHistory;
+import domain.table.OrderHistories;
 
 public interface PaymentStrategy {
-	BigDecimal pay(List<OrderHistory> orderHistories);
+	BigDecimal pay(OrderHistories orderHistories);
 }

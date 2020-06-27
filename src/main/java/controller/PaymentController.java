@@ -1,6 +1,6 @@
 package controller;
 
-import domain.Table;
+import domain.table.Table;
 import service.TableService;
 import view.InputView;
 import view.OutputView;

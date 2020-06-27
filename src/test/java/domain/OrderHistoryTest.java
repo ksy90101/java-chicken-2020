@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
+import domain.table.OrderHistory;
 
 public class OrderHistoryTest {
 

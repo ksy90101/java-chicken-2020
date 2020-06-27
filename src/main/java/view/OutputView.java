@@ -1,8 +1,9 @@
 package view;
 
 import domain.menu.Menu;
-import domain.OrderHistory;
-import domain.Table;
+import domain.table.OrderHistories;
+import domain.table.OrderHistory;
+import domain.table.Table;
 
 import java.util.List;
 
@@ -47,10 +48,10 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrderHistories(final List<OrderHistory> orderHistories) {
+    public static void printOrderHistories(final OrderHistories orderHistories) {
         System.out.println("## 주문 내역");
         System.out.println("## 메뉴 수량 금액");
-        for (final OrderHistory orderHistory : orderHistories){
+        for (final OrderHistory orderHistory : orderHistories.getOrderHistories()){
             System.out.println(orderHistory);
         }
         System.out.println();

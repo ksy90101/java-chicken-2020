@@ -1,11 +1,11 @@
 package domain.payment;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
-import domain.OrderHistory;
+import domain.table.OrderHistories;
+import domain.table.OrderHistory;
 
 public enum Payment {
 	CARD(1, new CardPayment()),
@@ -30,7 +30,7 @@ public enum Payment {
 		return this.number == number;
 	}
 
-	public BigDecimal pay(List<OrderHistory> orderHistories) {
+	public BigDecimal pay(OrderHistories orderHistories) {
 		return paymentStrategy.pay(orderHistories);
 	}
 }

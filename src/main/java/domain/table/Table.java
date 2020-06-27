@@ -1,15 +1,15 @@
-package domain;
+package domain.table;
 
 import java.util.Collections;
 import java.util.List;
 
 public class Table {
 	private final int number;
-	private final List<OrderHistory> orderHistories;
+	private final OrderHistories orderHistories;
 
-	public Table(final int number, final List<OrderHistory> orderHistories) {
+	public Table(final int number, List<OrderHistory> orderHistories) {
 		this.number = number;
-		this.orderHistories = orderHistories;
+		this.orderHistories = new OrderHistories(orderHistories);
 	}
 
 	public boolean isSameNumber(final int tableNumber) {
@@ -20,10 +20,6 @@ public class Table {
 		orderHistories.add(orderHistory);
 	}
 
-	public List<OrderHistory> getOrderHistories() {
-		return Collections.unmodifiableList(orderHistories);
-	}
-
 	@Override
 	public String toString() {
 		return Integer.toString(number);
@@ -31,5 +27,9 @@ public class Table {
 
 	public int getNumber() {
 		return number;
+	}
+
+	public OrderHistories getOrderHistories() {
+		return orderHistories;
 	}
 }

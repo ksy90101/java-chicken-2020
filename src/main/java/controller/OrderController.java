@@ -1,6 +1,5 @@
 package controller;
 
-import domain.OrderHistory;
 import service.MenuService;
 import service.TableService;
 import view.InputView;

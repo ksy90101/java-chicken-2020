@@ -11,6 +11,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
+import domain.table.OrderHistory;
+import domain.table.Table;
 
 class TableTest {
 
@@ -30,6 +32,6 @@ class TableTest {
 		Menu menu = menuRepository.findById(1);
 		OrderHistory orderHistory = new OrderHistory(menu, 1);
 		table.addOrderHistory(orderHistory);
-		assertThat(table.getOrderHistories()).hasSize(1);
+		assertThat(table.getOrderHistories().getOrderHistories()).hasSize(1);
 	}
 }

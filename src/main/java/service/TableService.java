@@ -4,9 +4,9 @@ import java.util.List;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
-import domain.OrderHistory;
-import domain.Table;
-import domain.TableRepository;
+import domain.table.OrderHistory;
+import domain.table.Table;
+import domain.table.TableRepository;
 
 public class TableService {
 	private TableRepository tableRepository;

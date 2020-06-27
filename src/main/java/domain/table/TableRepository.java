@@ -25,10 +25,10 @@ public class TableRepository {
 		table.addOrderHistory(orderHistory);
 	}
 
-	public Table findByNumber(int tableNumber) {
+	public Table findByNumber(int number) {
 		return findAll().stream()
-			.filter(table -> table.isSameNumber(tableNumber))
+			.filter(table -> table.isSameNumber(number))
 			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException("해당 테이블을 찾을 수 없습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 테이블을 찾을 수 없습니다. number = " + number));
 	}
 }

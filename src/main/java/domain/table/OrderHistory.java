@@ -22,7 +22,7 @@ public class OrderHistory {
 
 	@Override
 	public String toString() {
-		return menu.getName() + " " + quantity + " " + menu.getPrice();
+		return menu.getName() + " " + quantity + " " + (menu.getPrice() * quantity);
 	}
 
 	public Menu getMenu() {

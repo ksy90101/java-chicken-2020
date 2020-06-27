@@ -5,6 +5,7 @@ import domain.table.OrderHistories;
 import domain.table.OrderHistory;
 import domain.table.Table;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class OutputView {
@@ -18,20 +19,24 @@ public class OutputView {
         System.out.println("1 - 주문 등록");
         System.out.println("2 - 결제 하기");
         System.out.println("3 - 프로그램 종료");
+        System.out.println();
     }
 
     public static void printTables(final List<Table> tables) {
+        System.out.println();
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {
@@ -59,5 +64,11 @@ public class OutputView {
 
     public static void printTablePaymentGuide(final int number) {
         System.out.printf("## %d번 테이블의 결제를 진행합니다.", number);
+    }
+
+    public static void printResultAccount(final BigDecimal account) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(account.toString() + "원");
+        System.out.println();
     }
 }

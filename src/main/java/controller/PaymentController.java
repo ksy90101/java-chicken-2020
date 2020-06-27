@@ -1,5 +1,8 @@
 package controller;
 
+import java.math.BigDecimal;
+
+import domain.payment.Payment;
 import domain.table.Table;
 import service.TableService;
 import view.InputView;
@@ -18,6 +21,9 @@ public class PaymentController implements RunController{
 		OutputView.printOrderHistories(table.getOrderHistories());
 		OutputView.printTablePaymentGuide(table.getNumber());
 		int paymentNumber = InputView.inputPaymentNumber();
+		Payment payment = Payment.of(paymentNumber);
+		BigDecimal account = payment.pay(table.getOrderHistories());
+		OutputView.printResultAccount(account);
 	}
 
 	private int getTableNumber() {
